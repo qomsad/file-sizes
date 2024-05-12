@@ -5,8 +5,8 @@ gci -recurse -force $_.fullname -ErrorAction SilentlyContinue | % { $len += $_.l
 $foldername = $_.fullname
 $foldersize= '{0:N2}' -f ($len / 1Gb)
 $dataObject = New-Object PSObject
-Add-Member -inputObject $dataObject -memberType NoteProperty -name “foldername” -value $foldername
-Add-Member -inputObject $dataObject -memberType NoteProperty -name “foldersizeGb” -value $foldersize
+Add-Member -inputObject $dataObject -memberType NoteProperty -name "Folder name" -value $foldername
+Add-Member -inputObject $dataObject -memberType NoteProperty -name "Folder size in Gb" -value $foldersize
 $dataColl += $dataObject
 }
 $dataColl | Out-GridView -Title "Size of subdirectories"
